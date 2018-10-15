@@ -1,0 +1,46 @@
+aside {
+
+    width: 22%;
+    
+    .aside__navWrapper {
+        box-shadow: 0px 5px 10px rgba(65, 65, 65, 0.35);
+        height: calc(100vh - 100px);
+        background-color: white;
+
+        .aside__nav {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 80%;
+            margin: 0 auto;
+
+            .aside__title {
+                margin: 50px 0 0;
+            }
+
+            .aside__subTitle {
+                margin-bottom: 50px;
+            }
+
+            .aside__navLink {
+                margin-bottom: 30px;
+                text-decoration: none;
+                font-size: 1.2rem;
+                color: black;
+            }
+
+            .aside__subTitle, .aside__navLink {
+                text-transform: uppercase;
+                padding-left: 3px;
+            }
+
+            .aside__title, .aside__subTitle, .aside__navLink {
+                letter-spacing: 2px;
+            }
+        }
+    }
+
+    .aside__hamburger {
+        display: none;
+    }
+}
