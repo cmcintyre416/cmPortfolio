@@ -23,7 +23,8 @@ class App extends Component {
         about: 'Learn more about me.',
         projects: 'Check out some projects.',
         contact: 'Get in touch.',
-        more: 'Check out more fun stuff.'
+        more: 'Check out more fun stuff.',
+        test: 'test'
       }
     };
   }
