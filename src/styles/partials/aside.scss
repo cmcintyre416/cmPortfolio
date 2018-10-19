@@ -1,6 +1,7 @@
 aside {
 
     width: 10%;
+    transition: all .5s ease-in;
     
     .aside__navWrapper {
         position: fixed;
@@ -10,14 +11,51 @@ aside {
         justify-content: center;
         background-color: rgb(255, 255, 255);
         box-shadow: 0px 5px 10px rgba(65, 65, 65, 0.35);
+        transition: all .5s ease-in;
+
+        .aside__label, .aside__openLabel {
+            opacity: 0;
+            position: absolute;
+            left: 65px;
+            transform: scale(0);
+            padding: 5px;
+            font-size: 1.2rem;
+            color: white;
+            text-transform: none;
+            text-align: center;
+            background-color: rgba(0, 81, 255, 0.735);
+            border-radius: 5px;
+        }
 
         .aside__openButton {
             position: absolute;
+            width: 60px;
+            height: 50px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
             top: 50px;
             left: 50%;
             transform: translateX(-50%);
+            transition: 0.3s ease-in;
             color: black;
             font-size: 2rem;
+
+            svg {
+                transition: 0.5s ease-in-out;
+            }
+
+            &:hover {
+                color:rgba(0, 81, 255, 0.735);
+                cursor: pointer;
+
+                .aside__openLabel {
+                    opacity: 1;
+                    width: 150px;
+                    transform: scale(1);
+                    transition: all .4s ease-out;
+                }
+            }
         }
 
         .aside__nav {
@@ -28,7 +66,7 @@ aside {
 
             .aside__navLink {
                 position: relative;
-                width: 100%;
+                width: 60px;
                 height: 50px;
                 margin: 10px 0;
                 text-decoration: none;
@@ -39,34 +77,42 @@ aside {
                 justify-content: center;
                 align-items: center;
 
-                .aside__label {
-                    display: none;
-                    position: absolute;
-                    left: 65px;
-                    width: 150px;
-                    padding: 5px;
-                    font-size: 1.2rem;
-                    color: white;
-                    text-transform: none;
-                    text-align: center;
-                    background-color: rgba(0, 81, 255, 0.735);
-                    border-radius: 5px;
-                }
-
                 &:hover {
                     color:rgba(0, 81, 255, 0.735);
 
                     .aside__label {
-                        display: block;
-                        transition: 0.2s all;
+                        opacity: 1;
+                        width: 150px;
+                        transform: scale(1);
+                        transition: all .4s ease-in-out;
+                    }
+
+                    .aside__label--open {
+                        width: 120px;
+                        transition: all .2s ease-in-out;
+                        transform: scale(1.1);
+                        margin: 5px 0;
                     }
                 }
-            }   
+            } 
         }
+
+        .aside__label--open {
+            opacity: 1;
+            width: 120px;
+            transform: scale(1);
+            color: black;
+            background-color: white;
+            transition: .2s ease-in;
+            transition-delay: 0.35s;
+
+        }
+
     }
 
     .aside__hamburger {
         display: none;
     }
+
 }
 
