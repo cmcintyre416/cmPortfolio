@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faProjectDiagram, faUser, faAddressCard, faPlus, faHome, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 library.add(fab, faProjectDiagram, faUser, faAddressCard, faPlus, faHome, faArrowRight);
 
@@ -42,8 +42,6 @@ class Nav extends Component {
         //Side widths are here
 
         const sideWidths = {};
-        sideWidths.openSection = 25;
-        sideWidths.closedSection = 10;
         sideWidths.openBar = 200;
         sideWidths.closedBar = 60;
 
@@ -55,35 +53,29 @@ class Nav extends Component {
             sideNavOpen : true
           });
     
-          navElements.navSection.style.width = `${sideWidths.openSection}%`;
+          navElements.navSection.style.width = `${sideWidths.openBar}px`;
           navElements.navBar.style.width = `${sideWidths.openBar}px`;
-          navElements.navBar.style.backgroundColor = `rgba(0, 81, 255, 0.735)`;
           navElements.toggleButton.style.transform = `rotate(-180deg)`;
           navElements.toggleWrapper.style.left = `88%`;
-          navElements.toggleButton.style.color = `white`;
           navElements.sideLabels.forEach( item => item.classList.add('aside__label--open'));
-          navElements.sideIcons.forEach( item => item.style.color = 'white');
     
         } else {
           this.setState({
             sideNavOpen : false
           });
     
-          navElements.navSection.style.width = `${sideWidths.closedSection}%`;
+          navElements.navSection.style.width = `${sideWidths.closedBar}px`;
           navElements.navBar.style.width = `${sideWidths.closedBar}px`;
           navElements.toggleButton.style.transform = `rotate(-360deg)`;
           navElements.toggleWrapper.style.left = `50%`;
-          navElements.navBar.style.backgroundColor = `white`;
-          navElements.toggleButton.style.color = `black`;
           navElements.sideLabels.forEach( item => item.classList.remove('aside__label--open'));
-          navElements.sideIcons.forEach( item => item.style.color = 'black');
         }
       };
     render() {
         return (
             <div>
                 <div className="aside__navWrapper">
-                    <a onClick={this.toggleNavOpen.bind(this)} className="aside__openButton">
+                    <a href="/" onClick={this.toggleNavOpen.bind(this)} className="aside__openButton">
                         <FontAwesomeIcon icon="arrow-right" />
                         <span className="aside__openLabel">
                         {!this.state.sideNavOpen ? `${this.state.labelLinks.open}` : `${this.state.labelLinks.close}`}

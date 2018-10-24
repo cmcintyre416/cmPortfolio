@@ -4,12 +4,6 @@ import Main from './components/main';
 import Nav from './components/nav';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      }
-  };
-
   render() {
     return (
       <div className="outerWrapper">
@@ -19,7 +13,7 @@ class App extends Component {
               </aside>
               <main>
                 <div className="main__contentWrapper">
-                  <Main />
+                  <Main /> 
                 </div>
               </main>
           </div>
