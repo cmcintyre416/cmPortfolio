@@ -1,9 +1,13 @@
+//Main
+$main-background: #1e1e2e;
+
 //Nav colours
 $nav-grey: #27293c;
 $nav-font: #fff;
-$nav-icon: #9a9a9a;
+$nav-icon: #fff;
 
 //Borders
-$border-color: rgba(34, 42, 66, 0.5);
-$border-width: 1px;
-$border-radius: 1px;
+$border-color: $nav-grey;
+$border-width: 0.5px;
+$border-radius: 15px;
+$card-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.2);

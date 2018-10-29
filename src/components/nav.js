@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 //Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faProjectDiagram, faUser, faAddressCard, faPlus, faHome, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faProjectDiagram, faUser, faAddressCard, faPlus, faHome, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-library.add(fab, faProjectDiagram, faUser, faAddressCard, faPlus, faHome, faArrowRight);
+library.add(fab, faProjectDiagram, faUser, faAddressCard, faPlus, faHome, faBars);
 
 class Nav extends Component {
     constructor(props) {
@@ -22,6 +22,10 @@ class Nav extends Component {
           projects: 'Check out some projects.',
           contact: 'Get in touch.',
           more: 'Check out more fun stuff.'
+        },
+        name: {
+            full: 'colin mcintyre',
+            initials: 'cm'
         }
       };
     }
@@ -34,8 +38,7 @@ class Nav extends Component {
         const navElements = {};
         navElements.navSection = document.querySelector('aside');
         navElements.navBar = document.querySelector('.aside__navWrapper');
-        navElements.toggleButton = document.querySelector('.aside__openButton > svg');
-        navElements.toggleWrapper = document.querySelector('.aside__openButton');
+        navElements.toggleButton = document.querySelector('.aside__openButton');
         navElements.sideLabels = document.querySelectorAll('.aside__label');
         navElements.sideIcons = document.querySelectorAll('.aside__navLink > svg');
  
@@ -55,8 +58,7 @@ class Nav extends Component {
     
           navElements.navSection.style.width = `${sideWidths.openBar}px`;
           navElements.navBar.style.width = `${sideWidths.openBar}px`;
-          navElements.toggleButton.style.transform = `rotate(-180deg)`;
-          navElements.toggleWrapper.style.left = `88%`;
+          navElements.toggleButton.style.left = `${sideWidths.openBar / 2 - 15}px`;
           navElements.sideLabels.forEach( item => item.classList.add('aside__label--open'));
     
         } else {
@@ -66,22 +68,34 @@ class Nav extends Component {
     
           navElements.navSection.style.width = `${sideWidths.closedBar}px`;
           navElements.navBar.style.width = `${sideWidths.closedBar}px`;
-          navElements.toggleButton.style.transform = `rotate(-360deg)`;
-          navElements.toggleWrapper.style.left = `50%`;
+          navElements.toggleButton.style.left = `15px`;
           navElements.sideLabels.forEach( item => item.classList.remove('aside__label--open'));
         }
       };
+
+      testing = () => {
+          
+      }
+
     render() {
         return (
             <div>
-                <div className="aside__navWrapper">
-                    <a href="/" onClick={this.toggleNavOpen.bind(this)} className="aside__openButton">
-                        <FontAwesomeIcon icon="arrow-right" />
+                <a href="/" onClick={this.toggleNavOpen.bind(this)} className="aside__openButton">
+                        <FontAwesomeIcon icon="bars" />
                         <span className="aside__openLabel">
                         {!this.state.sideNavOpen ? `${this.state.labelLinks.open}` : `${this.state.labelLinks.close}`}
                         </span>
-                    </a>
+                </a>
+                <div className="aside__navWrapper">
                     <nav className="aside__nav">
+                        <div className="aside__nameWrapper aside__navLink">
+                            <span className="aside__name">
+                                {!this.state.sideNavOpen ? 
+                                `${this.state.name.initials}` : 
+                                    `${this.state.name.full}`
+                                }
+                            </span>
+                        </div>
                         <Link className="aside__navLink" to="/">
                             <FontAwesomeIcon icon="home" />
                             <span className="aside__label">{this.state.labelLinks.home}</span>

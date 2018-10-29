@@ -1,0 +1,60 @@
+@import './variables.scss';
+
+.overlay__wrapper {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: 1s 5s ease-in-out;
+    box-shadow: 1px 1px 10px black;
+
+    .overlay__content {
+        transition: 0.3s 1s ease-in-out;
+        text-align: center;
+
+        .overlay__title {
+            font-size: 5rem;
+            font-weight: 500;
+            letter-spacing: 1rem;
+        }
+
+        .overlay__subTitle {
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            font-weight: 100;
+            letter-spacing: 1rem;
+        };
+    }
+
+    .overlay__continueText {
+        font-size: 1.5rem;
+        font-weight: 100;
+        margin-top: 100px;
+
+        .overlay__continueButton {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .overlay__continueButtonText {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .overlay__loader {
+        opacity: 0;
+        transition: 0.3s 2s ease-in-out;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+}

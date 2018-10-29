@@ -1,6 +1,9 @@
+@import './variables.scss';
+
 body {
-    background-color: #1e1e2e;
+    background-color: $main-background;
     color: white;
+    overflow: hidden;
 }
 
 h1 {
