@@ -27,20 +27,21 @@ class Nav extends Component {
             full: 'colin mcintyre',
             initials: 'cm'
         }
-      };
-    }
+    };
+}
 
     toggleNavOpen = (e) => {
         e.preventDefault();
 
         //Nav Elements are here
 
-        const navElements = {};
-        navElements.navSection = document.querySelector('aside');
-        navElements.navBar = document.querySelector('.aside__navWrapper');
-        navElements.toggleButton = document.querySelector('.aside__openButton');
-        navElements.sideLabels = document.querySelectorAll('.aside__label');
-        navElements.sideIcons = document.querySelectorAll('.aside__navLink > svg');
+        let navSection = document.querySelector('aside');
+        let navBar = document.querySelector('.aside__navWrapper');
+        let toggleButton = document.querySelector('.aside__openButton');
+        let sideLabels = document.querySelectorAll('.aside__label');
+        // let sideIcons = document.querySelectorAll('.aside__navLink > svg');
+        let initialName = document.querySelector('.aside__name--closed');
+        let fullName = document.querySelector('.aside__name--open');
  
         //Side widths are here
 
@@ -56,26 +57,26 @@ class Nav extends Component {
             sideNavOpen : true
           });
     
-          navElements.navSection.style.width = `${sideWidths.openBar}px`;
-          navElements.navBar.style.width = `${sideWidths.openBar}px`;
-          navElements.toggleButton.style.left = `${sideWidths.openBar / 2 - 15}px`;
-          navElements.sideLabels.forEach( item => item.classList.add('aside__label--open'));
+          navSection.style.width = `${sideWidths.openBar}px`;
+          navBar.style.width = `${sideWidths.openBar}px`;
+          toggleButton.style.left = `${sideWidths.openBar / 2 - 15}px`;
+          sideLabels.forEach( item => item.classList.add('aside__label--open'));
+          initialName.style.opacity = 0;
+          fullName.style.opacity= 1;
     
         } else {
           this.setState({
             sideNavOpen : false
           });
     
-          navElements.navSection.style.width = `${sideWidths.closedBar}px`;
-          navElements.navBar.style.width = `${sideWidths.closedBar}px`;
-          navElements.toggleButton.style.left = `15px`;
-          navElements.sideLabels.forEach( item => item.classList.remove('aside__label--open'));
+          navSection.style.width = `${sideWidths.closedBar}px`;
+          navBar.style.width = `${sideWidths.closedBar}px`;
+          toggleButton.style.left = `15px`;
+          sideLabels.forEach( item => item.classList.remove('aside__label--open'));
+          initialName.style.opacity = 1;
+          fullName.style.opacity= 0;
         }
       };
-
-      testing = () => {
-          
-      }
 
     render() {
         return (
@@ -89,12 +90,8 @@ class Nav extends Component {
                 <div className="aside__navWrapper">
                     <nav className="aside__nav">
                         <div className="aside__nameWrapper aside__navLink">
-                            <span className="aside__name">
-                                {!this.state.sideNavOpen ? 
-                                `${this.state.name.initials}` : 
-                                    `${this.state.name.full}`
-                                }
-                            </span>
+                            <span className="aside__name aside__name--closed">{this.state.name.initials}</span>
+                            <span className="aside__name aside__name--open">{this.state.name.full}</span>
                         </div>
                         <Link className="aside__navLink" to="/">
                             <FontAwesomeIcon icon="home" />

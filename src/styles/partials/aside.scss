@@ -120,7 +120,6 @@ aside {
                 width: 75%;
                 padding: 25px 0;
                 margin: 0 auto 20px;
-                display: flex;
                 
                 .aside__name {
                     text-transform: uppercase;
@@ -130,7 +129,14 @@ aside {
                     padding-left: 4.5px;
                     color: rgba(255, 255, 255, 0.6);
                     text-align: center;
+                    transition: .2s ease;
+                    position: absolute;
                 }
+
+                .aside__name--open {
+                    opacity: 0;
+                }
+            
             }
 
         }
@@ -150,5 +156,7 @@ aside {
         display: none;
     }
 
+
+   
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Switch, Route } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { CSSTransitionGroup } from "react-transition-group";
 
 import LandingPage from './landingpage';
 import AboutMe from './aboutme';
@@ -15,8 +15,7 @@ const Main = ({location}) => {
     const timeout = { enter: 300, exit: 200 };
     
     return (
-        <TransitionGroup component="main" className="page-main">
-        <CSSTransition key={currentKey} timeout={timeout} classNames="fade" appear >
+        <CSSTransitionGroup key={currentKey} timeout={timeout} transitionName="fadeIn" transitionEnterTimeout={1000} transitionLeaveTimeout={700}>
             <div className="main__wrapper">
                 <Switch location={location}>
                     <Route exact path="/" component={LandingPage} />
@@ -26,8 +25,7 @@ const Main = ({location}) => {
                     <Route path="/more" component={More} />
                 </Switch>
             </div>
-        </CSSTransition>
-        </TransitionGroup>
+        </CSSTransitionGroup>
 )};
 
 export default withRouter(Main);
